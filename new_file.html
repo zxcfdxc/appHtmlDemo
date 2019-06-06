@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+		<title></title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+
+			body {
+				padding: 0 15px;
+				height: 100vh;
+			}
+
+			body>.contain-content {
+				width: 100%;
+				text-align: left;
+				background: #FFF;
+			}
+
+			html {
+				font-size: 53px;
+			}
+
+			body>.contain-content .contain-title {
+				font-size: 20px;
+				color: #000;
+				font-size: 1.4em;
+				font-weight: 700;
+			}
+
+			body>.contain-content .source-background {
+				vertical-align: top;
+				margin-bottom: 15px;
+				text-align: left;
+			}
+
+			body>.contain-content .thumbnail-news-icon {
+				display: inline-block;
+				vertical-align: top;
+			}
+
+			body>.contain-content .thumbnail-news-icon img {
+				height: 35px;
+				width: 35px;
+				-o-object-fit: contain;
+				object-fit: contain;
+				background: #F8F8F8;
+				border-radius: 50%;
+				margin-top: 18px;
+			}
+
+			body>.contain-content .thumbnail-information-and-datetime {
+				margin-top: 14px;
+				align-items: center;
+				display: flex;
+			}
+
+			body>.contain-content .thumbnail-information-and-datetime .source-issueNo-and-text {
+				display: flex;
+				flex-direction: column;
+				text-align: center;
+				border: 1px solid #346FFF;
+				border-radius: 2px;
+			}
+
+			body>.contain-content .thumbnail-information-and-datetime .source-issueNo-and-text .source-text {
+				font-size: 10px;
+				font-family: PingFangSC-Light;
+				font-weight: 300;
+				background: #346FFF;
+				padding: 1px 5px;
+				color: #FFF;
+				margin: 0;
+			}
+
+			body>.contain-content .thumbnail-information-and-datetime .source-issueNo-and-text .source-issueNo {
+				font-size: 12px;
+				font-family: DINAlternate-Bold;
+				font-weight: bold;
+				color: rgba(17, 17, 17, 1);
+				/* line-height:20px; */
+				/* border-bottom: 1px solid #346FFF;  border-left: 1px solid #346FFF;  border-right: 1px solid #346FFF; */
+				margin: 0;
+				padding: 2px 2px;
+			}
+
+			body>.contain-content .thumbnail-information-and-datetime .source-information-and-datetime {
+				display: inline-block;
+			}
+
+			body>.contain-content .thumbnail-information-and-datetime .source-information-and-datetime .source-information {
+				color: #353535;
+				font-size: 14px;
+				font-family: PingFangSC-Medium;
+				-webkit-margin-before: 0em;
+				-webkit-margin-after: 0em;
+				margin: 0 0 2px 8px;
+				max-width: 74vw;
+				overflow: hidden;
+				white-space: nowrap;
+				text-overflow: ellipsis;
+			}
+
+			body>.contain-content .thumbnail-information-and-datetime .source-information-and-datetime .source-publish-datetime {
+				color: #888;
+				font-size: 12px;
+				margin-left: 8px;
+				margin-top: ;
+				font-family: PingFangSC-Regular, PingFangSC-Medium;
+				-webkit-margin-before: 0em;
+				-webkit-margin-after: 0em;
+			}
+
+			body>.contain-content .text-justified {
+				text-align: justify;
+			}
+
+			body>.contain-content .unit-content-area {
+				color: #222222;
+				margin: 0;
+			}
+
+			body>.contain-content .unit-content-area h1,
+			body>.contain-content .unit-content-area h2,
+			body>.contain-content .unit-content-area h3,
+			body>.contain-content .unit-content-area h4,
+			body>.contain-content .unit-content-area h5,
+			body>.contain-content .unit-content-area h6 {
+				margin-bottom: 1em;
+				font-size: 1.2em;
+				font-weight: 700;
+				line-height: 1.2em;
+			}
+
+			body>.contain-content .unit-content-area h10 {
+				display: none;
+			}
+
+			body>.contain-content .unit-content-area i {
+				display: block;
+				line-height: 1.5em;
+				text-align: unset !important;
+				margin: 0 0 1em 0;
+			}
+
+			body>.contain-content .unit-content-area p {
+				line-height: 1.5em;
+				text-align: unset !important;
+				margin: 0 0 1em 0;
+			}
+
+			body>.contain-content .unit-content-area figure {
+				margin: 20px 0;
+			}
+
+			body>.contain-content .unit-content-area figure figcaption {
+				font-size: 0.8em !important;
+			}
+
+			body>.contain-content .unit-content-area cite {
+				display: inline-block;
+				font-size: 0.8em !important;
+				line-height: 2.0px;
+				margin: -22px 0;
+			}
+
+			body>.contain-content .unit-content-area img {
+				width: 100% !important;
+				height: unset !important;
+			}
+
+			body>.contain-content .unit-content-area video {
+				width: 100% !important;
+				height: unset !important;
+			}
+
+			body>.contain-content .unit-content-area table {
+				display: block;
+				overflow: auto;
+				width: 100% !important;
+				height: unset !important;
+			}
+
+			body>.contain-content .unit-content-area table tr td {
+				overflow: hidden;
+				text-overflow: ellipsis;
+				word-wrap: break-word;
+			}
+		</style>
+	</head>
+	<body style="-webkit-text-size-adjust: 100%;">
+		<div class="contain-content" ng-reflect-ng-style="[object Object]" style="font-size: 18px;">
+			<arrow-up-down-button ng-reflect-is-down="true">
+				<div class="no-filter">
+					<div class="division-line left-line"></div>
+					<div class="division-line right-line"></div> <span class="filter-openCloseWrap move-up-animation"> <span class="filter-openClose"></span>
+					</span>
+				</div>
+			</arrow-up-down-button>
+			<div class="contain-title">韓國瑜正在弱智化選民 </div>
+			<div class="source-background">
+				<div class="thumbnail-information-and-datetime article-info">
+					<div class="source-issueNo-and-text">
+						<div class="source-text"> 期数</div>
+						<div class="source-issueNo">1680 </div>
+					</div>
+					<div class="source-information-and-datetime">
+						<p class="source-information">新新聞</p>
+						<p class="source-publish-datetime">2019-05-16 </p>
+					</div>
+				</div>
+			</div>
+			<div class="unit-content-area text-justified" style="height: 1947px !important;">
+				<div id="p1">
+					<p></p>
+				</div>
+				<p>韓國瑜的作風就是讓誠懇的政策與政治議題討論反而變得滑稽可笑，隨便唬弄人卻成了理所當然。而那些準備要藉快問快答修理韓國瑜的議員則是等而下之，與韓國瑜競逐而下。</p>
+				<p>　高雄市長韓國瑜因為答詢「自經區」問題出糗，讓其他在野黨議員見獵心喜，準備了二、三十個瑣碎題目質詢韓國瑜，要他快問快答。市長這次沒上當，還說每一句都要答「高雄發大財」！</p>
+				<p>　搞不清楚自經區，韓國瑜似乎也沒覺得有什麼好丟臉，還繼續秀著「高雄發大財」這種廉價口號。韓國瑜的作風就是讓誠懇的政策與政治議題討論反而變得滑稽可笑，隨便唬弄人卻成了理所當然。</p>
+				<p>　而那些準備要藉快問快答修理韓國瑜的議員則是等而下之，與韓國瑜競逐而下──只想用沒意義的問題讓韓國瑜出糗，兩者都是降低民主政治品質的共犯。</p>
+				<p>　如果答不出自經區有帶給韓國瑜什麼教訓，也只是教他不要輕易隨著對手的笛聲起舞，卻沒有教會他要嚴肅地面對議題。最近他接受《天下》雜誌訪問，談到如果他選上總統會在高雄上班、不會北上總統府就是一個例子。</p>
+				<p>　因為擔心做了「落跑市長」激怒高雄選民，韓國瑜想出了選上總統後就在高雄上班的方法來安撫市民。</p>
+				<p>　過去的確出現過為平衡南北發展而遷都中南部之議，但韓國瑜的理由不是為了區域平衡，而是「總統在哪裡，國家權力中樞就在哪裡」。他說遷都茲事體大，而且行政院長要對立法院負責，所以總統府不要搬，行政院還在台北，「總統一個人動就好，所有問題全部解決。」他接著說：「總統把交通部長找來，捷運要加強，交通部長半夜三更就開始作業了；把教育部長找來，為什麼高雄不推展雙語教育，教育部馬上資源就下來，這很簡單。」</p>
+				<p>　這種說法根本是把憲政體制當兒戲，總統可以直接對一個部長下令處理某一個縣市的問題，而且對方「半夜三更」就要動、「資源就下來」？那留在台北的行政院長、立法院諸公是當傀儡嗎？</p>
+				<p>　韓國瑜當過民代也當過行政官員，當然不會天真到以為靠總統這個「權力中樞」就可以搞定大小事，從地鐵到雙語教育都能包辦。但他故意用這種簡化的方式陳述表達問題，其效果就是要讓政治馬戲化、讓公民弱智化，大家都不用嚴肅討論問題，以為只要一個「懶人包」就可以解決一切政治難題。</p>
+				<p>　韓國瑜這招有沒有用？有用！君不見在野黨議員也有樣學樣，要用快問快答來修理韓國瑜。朝野一起耍白痴、搞弱智，一起讓民主沉淪。</p>
+			</div>
+		</div>
+		<script type="text/javascript">
+			let contentEl = document.getElementsByClassName('unit-content-area')[0];
+			let images = contentEl.getElementsByTagName('img');
+			let imgLen = images.length;
+			let imgArr = new Array();
+			for (let i = 0; i < imgLen; i++) {
+				imgArr[i] = images[i].src;
+				console.log();
+				images[i].onclick = function() {
+					console.log(11);
+					window.JsToNative.checkImageDetail(imgArr, i);
+				}
+			}
+			getScaleTop();
+			getSelectedText();
+
+			function getScaleTop() {
+				var offset = document.getElementsByClassName('article-info')[0].offsetTop;
+				window.JsToNative.getOffsetTop(offset);
+			}
+
+			function getSelectedText() {
+				var txt;
+				if (window.getSelection) {
+					txt = window.getSelection().toString();
+				} else if (window.document.getSelection) {
+					txt = window.document.getSelection().toString();
+				} else if (window.document.selection) {
+					txt = window.document.selection.createRange().text;
+				}
+				window.JsToNative.onTranslate(txt);
+			}
+		</script>
+	</body>
+</html>
