@@ -3,9 +3,75 @@
 	<head>
 		<meta http-equiv="content-Type" content="text/html; charset=utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+      
+<meta property="og:image" content="http://cnpiecbucket101.oss-cn-beijing.aliyuncs.com/logos/express_reader/STDaily.png">
 
-		<title></title>
+	  <meta name="description" content="【编者按】6月是元首外交的繁忙季节。新时代学习工作室梳理出习近平在这些重要场合引用的部分诗词古语，带您一起学习经典。·句句箴言，品读今年以来习近平引用的那些诗词典故(一)·字字珠玑，品读今年以来习近……" data-react-helmet="true">
+	<title>一个月内多次出访 习近平引用了这些诗词典故</title>
+		<script type="text/javascript">
+			window.onload = function() {
+				// 微信提供的事件，微信浏览器内部初始化完成后
+				document.addEventListener("WeixinJSBridgeReady", function() {
+					var audio = document.getElementsByTagName('audio')[0]; //音频播放控件
+					audio.load();
+				}, false);
+
+			};
+		</script>
+		<link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" rel="stylesheet">
+		<link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
 		<style type="text/css">
+			.navbar {
+				background: #FFF;
+				box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+			}
+
+			.navbar-header .logo {
+				width: 36px;
+				height: 36px;
+				position: absolute;
+				top: 0;
+				bottom: 0;
+				left: 15px;
+				margin: auto;
+				border: 1px solid #eee;
+				border-radius: 7px;
+			}
+
+			.navbar-header .slogan {
+				font-size: 14px;
+				color: #222;
+				position: absolute;
+				top: 0;
+				bottom: 0;
+				left: 61px;
+				line-height: 50px;
+			}
+
+			.navbar-header .open {
+				position: absolute;
+				top: 0;
+				bottom: 0;
+				right: 15px;
+				margin: auto;
+				width: 72px;
+				height: 28px;
+				line-height: 28px;
+				color: #fff;
+				font-size: 14px;
+				text-align: center;
+				font-weight: 500;
+				border-radius: 14px;
+				background-color: #03B076;
+			}
+
+			.page-main {
+				margin-top: 49px;
+				/* 	padding-left: 15px;
+				padding-right: 15px; */
+			}
+
 			.audio-wrapper {
 				width: 100%;
 				/* height: 54px; */
@@ -166,7 +232,6 @@
 			.contain-content .thumbnail-information-and-datetime {
 				align-items: center;
 				display: flex;
-				font-family:PingFangSC-Regular;
 			}
 
 
@@ -243,7 +308,7 @@
 			}
 
 			.contain-content .unit-content-area * {
-				word-wrap:break-word;
+				word-wrap: break-word;
 				max-width: 100%;
 				height: auto !important;
 			}
@@ -345,7 +410,9 @@
 				font-size: 13px;
 				color: #9B9B9B;
 				line-height: 24px;
+				font-family: PingFangSC-Regular;
 			}
+
 
 			.article-info .source-img {
 				width: 22px;
@@ -358,6 +425,16 @@
 	</head>
 
 	<body>
+		<img src="https://ossobj.expressreadertw.com/magvIcon/appid-12/Icon-128.png" style="position:absolute; top:0; left:0;  width: 80%; z-index:-1;opacity: 0; ">
+
+		<div class="navbar navbar-fixed-top">
+			<div class="container">
+				<div class="navbar-header"><img class="logo" src="https://ossobj.expressreadertw.com/magvIcon/appid-12/Icon-128.png"><span
+					 class="slogan">澳門快訊</span><a href="javascript:share()">
+						<div class="open">打开</div>
+					</a></div>
+			</div>
+		</div>
 		<!-- mp3 start -->
 		<div class="audio-wrapper" id="bot-mp3">
 			<audio>
@@ -370,7 +447,6 @@
 						黑洞照片来了！
 					</div>
 					<div class="audio-time">
-						00:00
 					</div>
 				</div>
 				<img src="mp3img/playIcon-white.png" id="audioPlayer" class="audio-right"></img>
@@ -406,8 +482,9 @@
 
 				<div class="unit-content-area text-justified">
 					<!-- video start -->
-					<div id="tide_video_loading" style="margin:0 auto;"><video controlslist="nodownload" controls="controls" autoplay="autoplay" src="http://v.cen.ce.cn/video/2019-4-11/20194111554951898244_81.mp4"
-						 playsinline="true" x-webkit-airplay="deny" webkit-playsinline="true"></video>
+					<div id="tide_video_loading" style="margin:0 auto;"><video controlslist="nodownload" controls="controls" autoplay="autoplay"
+						 src="http://v.cen.ce.cn/video/2019-4-11/20194111554951898244_81.mp4" playsinline="true" x-webkit-airplay="deny"
+						 webkit-playsinline="true"></video>
 					</div>
 					<!-- video-end -->
 					<p></p>
@@ -430,22 +507,14 @@
 			</div>
 		</div>
 	</body>
-	
-	
+
+
 	<script type="text/javascript">
 		let contentEl = document.getElementsByClassName('unit-content-area')[0];
 		let images = contentEl.getElementsByTagName('img');
 		let imgLen = images.length;
 		let imgArr = new Array();
 
-		for (let i = 0; i < imgLen; i++) {
-			imgArr[i] = images[i].src;
-			images[i].onclick = function() {
-				window.JsToNative.checkImageDetail(imgArr, i);
-			}
-		}
-		getScaleTop();
-		getSelectedText();
 		initVideos();
 
 		function initVideos() {
@@ -458,21 +527,9 @@
 			}
 		}
 
-		function getScaleTop() {
-			var offset = document.getElementsByClassName('article-info')[0].offsetTop;
-			window.JsToNative.getOffsetTop(offset);
-		}
-
-		function getSelectedText() {
-			var txt;
-			if (window.getSelection) {
-				txt = window.getSelection().toString();
-			} else if (window.document.getSelection) {
-				txt = window.document.getSelection().toString();
-			} else if (window.document.selection) {
-				txt = window.document.selection.createRange().text;
-			}
-			window.JsToNative.onTranslate(txt);
+		function share() {
+			var locationStr = 'http://uat.api.expreader.com/download/macau/macauApp.html';
+			window.location = locationStr;
 		}
 	</script>
 
@@ -485,20 +542,17 @@
 			audioDuration = 0;
 		var canShowAudio = false;
 		var durationTime = document.querySelectorAll(".audio-time");
-
+		var audioPlayer = document.getElementById('audioPlayer');
+		var hideBtn = document.querySelector(".audio-left");
 		document.addEventListener('DOMContentLoaded', function() {
 			// 初始化音频控制事件
 			initAudioEvent();
 		}, false);
 
 		function initAudioEvent() {
-			var audioPlayer = document.getElementById('audioPlayer');
-			var hideBtn = document.querySelector(".audio-left");
-
 			audio.load()
-			// 			
 			audio.addEventListener('canplay', function() {
-				if ((!browser.versions.ios||browser.versions.isWechar) && audio.currentTime != 1) {
+				if (!browser.versions.ios &&audio.currentTime != 1) {
 					audio.play();
 					audio.pause();
 					audio.currentTime = 1;
@@ -620,8 +674,6 @@
 		//滚动滑轮触发scrollFunc方法  //ie 谷歌  
 		window.onscroll = scrollFunc;
 
-
-
 		var scrollAction = {
 				x: 'undefined',
 				y: 'undefined'
@@ -696,7 +748,7 @@
 				var u = navigator.userAgent,
 					app = navigator.appVersion;
 				return { //移动终端浏览器版本信息  
-				isWechar: u.indexOf('MicroMessenger')> -1,
+					isWechar: u.indexOf('MicroMessenger') > -1,
 					trident: u.indexOf('Trident') > -1, //IE内核  
 					presto: u.indexOf('Presto') > -1, //opera内核  
 					webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核  

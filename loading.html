@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			.page-main {
+				display: flex;
+				width: 100vw;
+				height: 100vh;
+				justify-content: center;
+				align-items: center;
+				flex-direction: column;
+			}
+
+
+			.text {
+				margin-top: 15px;
+				font-size: 15px;
+				font-family: PingFangSC-Regular;
+				font-weight: 400;
+				color: rgba(147, 147, 147, 1);
+			}
+
+			.loading {
+				/*固定loading*/
+				/* position: fixed;
+				top: 50%;
+				left: 50%; */
+				/*垂直水平居中*/
+				/* margin: -20px 0 0 -20px; */
+				width: 30px;
+				height: 30px;
+				border: 2px solid;
+				border-color: #83E5C7 #83E5C7 transparent;
+				border-radius: 50%;
+				box-sizing: border-box;
+				/*动画时间1s，线性变化，无限循环*/
+				animation: loading 1s linear infinite;
+			}
+
+			@keyframes loading {
+				0% {
+					transform: rotate(0deg);
+				}
+
+				100% {
+					transform: rotate(360deg);
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="page-main">
+			<div class="loading"></div>
+			<div class="text">
+				正在加載…
+			</div>
+		</div>
+	</body>
+</html>

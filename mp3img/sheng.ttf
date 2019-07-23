@@ -1,0 +1,13 @@
+push graphic-context
+viewbox 0 0 22 11
+affine 0.98699 0 0 0.975177 0 0
+push defs
+pop defs
+push graphic-context
+push graphic-context
+push graphic-context
+affine 1 0 0 1 0 9.58
+pop graphic-context
+pop graphic-context
+pop graphic-context
+pop graphic-context

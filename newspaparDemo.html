@@ -9,17 +9,21 @@
 			* {
 				margin: 0;
 				padding: 0;
-				
+
 			}
-   img,video {
-	   max-width: 100%;
-   }
-   p{
-	   font-size: 18px;
-   }
+
+			img,
+			video {
+				max-width: 100%;
+			}
+
+			p {
+				font-size: 18px !important;
+			}
+
 			body {
 				padding: 20px 15px;
-         min-height: 100vh;
+				/* min-height: 100vh; */
 			}
 
 			body>.contain-content {
@@ -132,15 +136,18 @@
 			}
 
 			body>.contain-content .unit-content-area {
-				color: #222222;
+				color: #222222 !important;
 				margin: 0;
-				 max-width: 100%;
-				 height: auto !important;
+				max-width: 100%;
+				height: auto !important;
 			}
-body>.contain-content .unit-content-area *{
-				 max-width: 100%;
-				 height: auto !important;
+
+			body>.contain-content .unit-content-area * {
+				word-wrap:break-word;
+				max-width: 100%;
+				height: auto !important;
 			}
+
 			body>.contain-content .unit-content-area h1,
 			body>.contain-content .unit-content-area h2,
 			body>.contain-content .unit-content-area h3,
@@ -168,12 +175,13 @@ body>.contain-content .unit-content-area *{
 				line-height: 1.5em;
 				text-align: unset !important;
 				margin: 0 0 1em 0;
-				text-indent:0px !important;
+				text-indent: 0px !important;
 			}
-			   
-           body p {
-			   text-indent:0px !important;
-		   }
+
+			body p {
+				text-indent: 0px !important;
+			}
+
 			body>.contain-content .unit-content-area figure {
 				margin: 20px 0;
 			}
@@ -237,6 +245,7 @@ body>.contain-content .unit-content-area *{
 				font-size: 13px;
 				color: #9B9B9B;
 				line-height: 24px;
+				font-family:PingFangSC-Regular;
 			}
 
 			.article-info .source-img {
@@ -270,7 +279,9 @@ body>.contain-content .unit-content-area *{
 				</div>
 			</div>
 			<div class="unit-content-area text-justified">
-				<div id="tide_video_loading" style="margin:0 auto;width:553px;height:450px;"><video width="553" height="450" controls="controls" autoplay="autoplay" src="http://v.cen.ce.cn/video/2019-4-11/20194111554951898244_81.mp4" playsinline="true" x-webkit-airplay="deny" webkit-playsinline="true"></video></div>
+				<div id="tide_video_loading" style="margin:0 auto;width:553px;height:450px;"><video width="553" height="450"  controlslist="nodownload"
+					 controls="controls" autoplay="autoplay" src="http://v.cen.ce.cn/video/2019-4-11/20194111554951898244_81.mp4"
+					 playsinline="true" x-webkit-airplay="deny" webkit-playsinline="true"></video></div>
 				<p></p>
 				<p></p>
 				<p>本刊评论员/闫肖锋&nbsp;</p>
@@ -291,12 +302,12 @@ body>.contain-content .unit-content-area *{
 			</div>
 		</div>
 	</body>
-<script type="text/javascript">
+	<script type="text/javascript">
 		let contentEl = document.getElementsByClassName('unit-content-area')[0];
 		let images = contentEl.getElementsByTagName('img');
 		let imgLen = images.length;
 		let imgArr = new Array();
-	
+
 		for (let i = 0; i < imgLen; i++) {
 			imgArr[i] = images[i].src;
 			images[i].onclick = function() {
@@ -305,22 +316,23 @@ body>.contain-content .unit-content-area *{
 		}
 		getScaleTop();
 		getSelectedText();
-	initVideos() ;
-	
-   function initVideos() {
-    let videos = Array.from(document.getElementsByTagName('video'));
+		initVideos();
 
-    for (let video of videos) {
-      video.setAttribute('playsinline', '');
-      video.setAttribute('webkit-playsinline', '');
-      video.setAttribute('x-webkit-airplay', 'deny');
-    }
-  }
+		function initVideos() {
+			let videos = Array.from(document.getElementsByTagName('video'));
+
+			for (let video of videos) {
+				video.setAttribute('playsinline', '');
+				video.setAttribute('webkit-playsinline', '');
+				video.setAttribute('x-webkit-airplay', 'deny');
+			}
+		}
+
 		function getScaleTop() {
 			var offset = document.getElementsByClassName('article-info')[0].offsetTop;
 			window.JsToNative.getOffsetTop(offset);
 		}
-	
+
 		function getSelectedText() {
 			var txt;
 			if (window.getSelection) {
@@ -333,5 +345,5 @@ body>.contain-content .unit-content-area *{
 			window.JsToNative.onTranslate(txt);
 		}
 	</script>
-	
+
 </html>
