@@ -19,20 +19,68 @@
 				max-width: 100%;
 				height: auto;
 			}
+		</style>
+		<style type="text/css">
+			.page-main {
+				display: flex;
+				width: 100vw;
+				height: 100vh;
+				justify-content: center;
+				align-items: center;
+				flex-direction: column;
+			}
 
-			.test {
-				height: 600px;
-				max-width: 600px;
-				font-size: 40px;
+
+			.text {
+				margin-top: 15px;
+				font-size: 15px;
+				font-family: PingFangSC-Regular;
+				font-weight: 400;
+				color: rgba(147, 147, 147, 1);
+			}
+
+			.loading {
+				/*固定loading*/
+				/* position: fixed;
+				top: 50%;
+				left: 50%; */
+				/*垂直水平居中*/
+				/* margin: -20px 0 0 -20px; */
+				width: 30px;
+				height: 30px;
+				border: 2px solid;
+				border-color: #0B6DD3 #0B6DD3 transparent;
+				border-radius: 50%;
+				box-sizing: border-box;
+				/*动画时间1s，线性变化，无限循环*/
+				animation: loading 1s linear infinite;
+			}
+
+			@keyframes loading {
+				0% {
+					transform: rotate(0deg);
+				}
+
+				100% {
+					transform: rotate(360deg);
+				}
 			}
 		</style>
-		<div class="test">
+
+		<div class="page-main">
+			<div class="loading"></div>
+			<div class="text">
+				正在加載…
+			</div>
 		</div>
 		<script src="http://code.jquery.com/jquery-latest.js"></script>
 		<script type="text/javascript">
 			var isTimeOver = true;
 			var downUrl = 'https://uat.api.expreader.com/download/chinafocus/apk/ExpressReader.apk?'+ Math.random();
 			var goUrl = "https://play.google.com/store/apps/details?id=com.cnpeak.expressreader";
+			var iosUrl = "https://itunes.apple.com/cn/app/id1288447285?mt=8";
+			
+			
 			var winHeight = typeof window.innerHeight != 'undefined' ? window.innerHeight : document.documentElement.clientHeight;
 			var cssText =
 				"#weixin-tip{position: fixed; left:0; top:0; background: rgba(0,0,0,0.8); filter:alpha(opacity=80); width: 100%; height:100%; z-index: 100;} #weixin-tip p{text-align: center; margin-top: 10%; padding:0 5%;}";
@@ -57,7 +105,7 @@
 				language: (navigator.browserLanguage || navigator.language).toLowerCase()
 			}
 			goDownPage();
-			setOverTime();
+
 			//JavaScript检查网站是否可以访问
 			//config配置参数
 			//url：要检查的域名或者图片url地址，如http://w3dev.cn，http://w3dev.cn/logo.jpg
@@ -77,25 +125,21 @@
 
 			function goDownPage() {
 				if (browser.versions.ios || browser.versions.iPhone || browser.versions.iPad) {
-					window.location = "https://itunes.apple.com/cn/app/id1288447285?mt=8";
+					// window.location = iosUrl;
 				} else
 				if (browser.versions.android) {
+					setOverTime();
 					//判断能否翻墙
 					checkWebSiteOnline({
 						url: 'https://lh3.googleusercontent.com/kPZzK2-bZOssxxI3us3MmJZumwwbX_BhsR9Rs4M0CWnRkCwCl-JsaIS7uRL7Csl28mg=s180-rw',
 						success: function(url) {
+							if (!isTimeOver) return;
 							isTimeOver = false;
 							window.location.href = goUrl;
 						},
 						error: function(url) {
 							isTimeOver = false;
-							if (browser.versions.isWechart) {
-								loadHtml();
-								loadStyleText(cssText);
-							} else {
-							window.location = downUrl;
-							// 'https://uat.api.expreader.com/html/download/chinafocus/apk/expressReader.apk'
-							}
+							androidWeDown()
 						}
 					})
 				}
@@ -104,11 +148,23 @@
 			function setOverTime() {
 				setTimeout(function() {
 					if (isTimeOver) {
-						window.location = downUrl;
-						isTimeOver = !isTimeOver;
+						androidWeDown()
 					}
-				}, 1500);
-				
+				}, 1000);
+
+			}
+
+			function androidWeDown() {
+				if (browser.versions.isWechart) {
+					loadingHiden()
+					loadHtml();
+					loadStyleText(cssText);
+				} else {
+
+					window.location = downUrl;
+					loadingHiden()
+					// 'https://uat.api.expreader.com/html/download/chinafocus/apk/expressReader.apk'
+				}
 			}
 
 			function loadHtml() {
@@ -116,6 +172,10 @@
 				div.id = 'weixin-tip';
 				div.innerHTML = '<p><img src="https://uat.api.expreader.com/html/live_weixin.png" alt="微信打开"/></p>';
 				document.body.appendChild(div);
+			}
+
+			function loadingHiden() {
+				$('.page-main').hide();
 			}
 
 			function loadStyleText(cssText) {
