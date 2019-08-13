@@ -477,7 +477,16 @@
 	</script>
 
 	<script type="text/javascript">
-		var audioWrapper = document.querySelector('.audio-wrapper')
+		//mp3文件名
+		var mp3List = ['https://audio.expressreadertw.com/news/5124/901/6ceaf18a-bc16-11e9-a262-00163e06379c_0.mp3',
+			' https://audio.expressreadertw.com/news/5124/901/6ceaf18a-bc16-11e9-a262-00163e06379c_1.mp3',
+			' https://audio.expressreadertw.com/news/5124/901/6ceaf18a-bc16-11e9-a262-00163e06379c_2.mp3',
+			' https://audio.expressreadertw.com/news/5124/901/6ceaf18a-bc16-11e9-a262-00163e06379c_3.mp3',
+			' https://audio.expressreadertw.com/news/5124/901/6ceaf18a-bc16-11e9-a262-00163e06379c_4.mp3',
+			' https://audio.expressreadertw.com/news/5124/901/6ceaf18a-bc16-11e9-a262-00163e06379c_5.mp3',
+			' https://audio.expressreadertw.com/news/5124/901/6ceaf18a-bc16-11e9-a262-00163e06379c_6.mp3'
+		];
+		var audioWrapper = document.querySelector('.audio-wrapper');
 		var audio = document.getElementsByTagName('audio')[0]; //音频播放控件
 		var topMp3Player = document.querySelector(".top-audio-left");
 		var highBottom = '10px',
@@ -485,41 +494,46 @@
 			audioDuration = 0;
 		var canShowAudio = false;
 		var durationTime = document.querySelectorAll(".audio-time");
+		var durationList = [];
 
 		document.addEventListener('DOMContentLoaded', function() {
 			// 初始化音频控制事件
 			initAudioEvent();
 		}, false);
 
+		//总时间
+		// var mp3AllTime = 0;
+		let num = 0;
+		var currentFile;
 
-		//mp3文件名
-		var mp3List = ['mp3/advers.mov', 'mp3/behind.mov'];
-
-		var num = 0;
+		canPlay(playAudio);
 
 		function getMusic(list) {
-
 			var len = list.length,
-
 				music = list[num];
-			num++;
-			console.log(mp3List.length, num)
-			if (num == mp3List.length + 1) {
+			if (num >= mp3List.length) {
+				num = 0;
 				return false;
 			}
-
+			num++;
 			if (music) {
-
 				return music;
-
 			} else {
-
 				getMusic(list);
-
 			}
 
 		}
-		var currentFile;
+		upDataMusic()
+
+		function upDataMusic() {
+			for (let i = 0; i < mp3List.length; i++) {
+				let audioPlay = new Audio();
+				audioPlay.src = mp3List[i];
+				audioPlay.load();
+			}
+		}
+
+
 		//查看是否支持audio标签，如果支持，预加载当前指向mp3文件
 		function canPlay(callback) {
 
@@ -534,6 +548,8 @@
 				audioPlay.src = currentFile;
 
 				audioPlay.load();
+
+
 			} catch (e) {
 				callback(false, e);
 			}
@@ -546,21 +562,8 @@
 				try {
 					var oAudio = audio;
 					oAudio.src = currentFile;
-					if (oAudio.paused) {
-						oAudio.play();
-					} else {
-						oAudio.pause();
-					}
-
-					oAudio.onended = function() {
-						let src = getMusic(mp3List);
-						if (src) {
-							oAudio.src = src;
-							oAudio.play();
-						} else {
-
-						}
-					}
+					console.log(2);
+					// oAudio.play();
 				} catch (e) {
 					// Fail silently but show in F12 developer tools console
 					if (window.console && console.error("Error:" + e));
@@ -568,21 +571,10 @@
 			}
 		}
 
+
 		function initAudioEvent() {
 			var audioPlayer = document.getElementById('audioPlayer');
 			var hideBtn = document.querySelector(".audio-left");
-
-			// audio.load()
-			// 			
-			// audio.addEventListener('canplay', function() {
-			// 	if (!browser.versions.ios && audio.currentTime != 1) {
-			// 		audio.play();
-			// 		audio.pause();
-			// 		audio.currentTime = 1;
-			// 	}
-			// 	console.log(audio.duration);
-			// 	showTime()
-			// })
 
 			// 监听音频播放时间并更新进度条
 			audio.addEventListener('timeupdate', function() {
@@ -607,12 +599,12 @@
 			// 点击播放/暂停图片时，控制音乐的播放与暂停
 			topMp3Player.addEventListener('click', function() {
 				canShowAudio = true;
-				
+
 				// 改变播放/暂停图片
 				if (audio.paused) {
 					// 开始播放当前点击的音频
 					playStateAudio();
-					
+
 				} else {
 					stopStateAudio();
 				}
@@ -627,13 +619,19 @@
 					stopStateAudio();
 				}
 			}, false);
-
-
 		}
 
-
 		function updateTime() {
-			var nowTime = audio.duration - audio.currentTime;
+			let useAllTime = 0;
+			for (let i = 0; i < num - 1; i++) {
+				if (num > 1) {
+					useAllTime += durationList[i];
+					// console.log(durationList[i]);
+				}
+
+			}
+
+			var nowTime = audio.currentTime + useAllTime;
 			showTime(nowTime)
 		}
 
@@ -645,9 +643,13 @@
 			}
 		}
 
-		function playStateAudio() {
-			canPlay(playAudio);
-			// audio.play();
+		function playStateAudio(isPus) {
+
+			audio.play();
+			durationList[num - 1] = audio.duration;
+			console.log(durationList, num);
+			//每个音频的长度
+			console.log(audio.duration);
 			audioPlayer.src = 'mp3img/stopIcon-white.png';
 			topMp3Player.src = 'mp3img/play.gif';
 		}
@@ -657,19 +659,24 @@
 			audioPlayer.src = 'mp3img/playIcon-white.png';
 			topMp3Player.src = 'mp3img/playIcon.png';
 		}
-		
-		function endGoOnAudio(){
-				let src = getMusic(mp3List);
-						if (src) {
-							audio.src = src;
-							audio.play();
-						} else {
-			endStateAudio();
-						}
+
+		function endGoOnAudio() {
+			let src = getMusic(mp3List);
+			if (src) {
+				audio.src = src;
+				audio.play();
+				audio.oncanplay = function() {
+					durationList[num - 1] = audio.duration;
+				}
+			} else {
+				endStateAudio();
+			}
 		}
 
 		function endStateAudio() {
-		
+
+			num = 0;
+			canPlay(playAudio);
 			audio.load();
 			audioPlayer.src = 'mp3img/playIcon-white.png';
 			topMp3Player.src = 'mp3img/playIcon.png';
@@ -686,7 +693,7 @@
 		}
 
 		function scrollFunc() {
-			console.log(111);
+
 			if (!canShowAudio) return //没有点击开始不监听
 			scrollFuncin();
 			if (scrollDirection == 'down') {
@@ -696,16 +703,6 @@
 				//页面向上滚动要做的事情
 				showAudio();
 			}
-
-			// if (e.wheelDelta) { //第一步：先判断浏览器IE，谷歌滑轮事件               
-			// 	if (e.wheelDelta > 0) { //当滑轮向上滚动时  
-			// 		showAudio();
-			// 	}
-			// 	if (e.wheelDelta < 0) { //当滑轮向下滚动时  
-			// 		console.log("滑轮向下滚动");
-			// 		hiddenAudio();
-			// 	}
-			// }
 		}
 
 		//滚动滑轮触发scrollFunc方法  //ie 谷歌  
@@ -801,9 +798,5 @@
 			}(),
 			language: (navigator.browserLanguage || navigator.language).toLowerCase()
 		}
-
-		// if (browser.versions.ios || browser.versions.iPhone || browser.versions.iPad) {  
-		//  window.location="https://itunes.apple.com/cn/app/id1288447285?mt=8";  
-		// }
 	</script>
 </html>
