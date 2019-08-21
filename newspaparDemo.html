@@ -143,7 +143,7 @@
 			}
 
 			body>.contain-content .unit-content-area * {
-				word-wrap:break-word;
+				word-wrap: break-word;
 				max-width: 100%;
 				height: auto !important;
 			}
@@ -245,7 +245,7 @@
 				font-size: 13px;
 				color: #9B9B9B;
 				line-height: 24px;
-				font-family:PingFangSC-Regular;
+				font-family: PingFangSC-Regular;
 			}
 
 			.article-info .source-img {
@@ -279,8 +279,8 @@
 				</div>
 			</div>
 			<div class="unit-content-area text-justified">
-				<div id="tide_video_loading" style="margin:0 auto;width:553px;height:450px;"><video width="553" height="450"  controlslist="nodownload"
-					 controls="controls" autoplay="autoplay" src="http://v.cen.ce.cn/video/2019-4-11/20194111554951898244_81.mp4"
+				<div id="tide_video_loading" style="margin:0 auto;width:553px;height:450px;"><video width="553" height="450"
+					 controlslist="nodownload" controls="controls" autoplay="autoplay" src="http://v.cen.ce.cn/video/2019-4-11/20194111554951898244_81.mp4"
 					 playsinline="true" x-webkit-airplay="deny" webkit-playsinline="true"></video></div>
 				<p></p>
 				<p></p>
@@ -311,7 +311,9 @@
 		for (let i = 0; i < imgLen; i++) {
 			imgArr[i] = images[i].src;
 			images[i].onclick = function() {
-				window.JsToNative.checkImageDetail(imgArr, i);
+				window.webkit.messageHandlers && window.webkit.messageHandlers.checkImageDetail && window.webkit.messageHandlers.checkImageDetail
+					.postMessage([imgArr, i]);
+				window.JsToNative && window.JsToNative.checkImageDetail(imgArr, i);
 			}
 		}
 		getScaleTop();
